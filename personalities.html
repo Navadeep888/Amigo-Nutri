@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalities</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/originals/19/fa/fa/19fafa4cf398d226849a4cc17fb05a40.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: #000;
+            color: #fff;
+            padding: 20px 0;
+            border-bottom: 5px solid #d22185;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        header h1 .back-home {
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        header h1 .back-home span {
+            margin-left: 10px;
+            font-size: 22px;
+        }
+
+        main {
+            padding: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        article {
+            display: flex;
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        article .content {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        article .image-container {
+            flex: 0 0 250px;
+        }
+
+        article .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        article .image-container img:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        article h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #d22185;
+        }
+
+        article .meta {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        header nav a {
+            color: #fff;
+            margin-left: 25px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #d22185;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html" class="back-home"><i class="fas fa-home"></i><span>Home</span></a></h1>
+            <nav>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <article>
+                <div class="content">
+                    <h2>Ronaldo</h2>
+                    <h3>Strength Training:</h3>
+                    <p>1. Squats (10-12)</p>
+                    <p>2. Lunges (10-12 each leg)</p>
+                    <p>3. Push-Ups (10-15)</p>
+                    <p>4. Plank (30-60 seconds)</p>
+                    <p>5. Box Jumps (10-12)</p>
+                    <p>Cardio: 30min of running</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://th.bing.com/th/id/OIP.vSYfTh98TWyebcgXf6I_uwHaEK?rs=1&pid=ImgDetMain" alt="">
+                </div>
+            </article>
+
+            <article>
+                <div class="content">
+                    <h2>Lionel Messi</h2>
+                    <h3>Cardio and Agility:</h3>
+                    <p>1. Dribbling drills(30 min)</p>
+                    <p>2. Sprint intervals(30sec on, 30sec off)</p>
+                    <p>3. Stretching routine(15-20min)</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://www.gannett-cdn.com/presto/2020/08/25/USAT/842737a0-5b6c-47bc-adbc-ea5bef879661-Messi_gone.jpg" alt="">
+                </div>
+            </article>
+
+            <article>
+                <div class="content">
+                    <h2>Kylie Jenner</h2>
+                    <h3>Strength Training:</h3>
+                    <p>1. Bodyweight Squats (10-15)</p>
+                    <p>2. Dumbell Rows (10-12)</p>
+                    <p>3. Push-Ups (8-12)</p>
+                    <p>4. Plank (30-60 seconds)</p>
+                    <p>5. Glute Bridges (10-15)</p>
+                    <p>Cardio: 20min of cycling</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://i.iheart.com/v3/re/new_assets/5f7291b9eea7c766031a6040" alt="">
+                </div>
+            </article>
+
+            <article>
+                <div class="content">
+                    <h2>Selena Gomez</h2>
+                    <h3>Strength Training:</h3>
+                    <p>1. Deadlifts (10-12)</p>
+                    <p>2. Bench Press (10-12)</p>
+                    <p>3. Pull-Ups (5-10)</p>
+                    <p>4. Shoulder Press (10-12)</p>
+                    <p>5. Tricep Dips (8-12)</p>
+                    <p>Cardio: 20min of HIIT</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://www.millenniumpost.in/h-upload/2024/12/11/822310-selena-gomez-2.jpg" alt="">
+                </div>
+            </article>
+
+            <article>
+                <div class="content">
+                    <h2>Taylor Swift</h2>
+                    <h3>Cardio:</h3>
+                    <p>1. Running or Jogging (30min)</p>
+                    <p>2. Yoga or Pilates (30-45)</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://th.bing.com/th?id=OIF.Ls621r5YWAtB%2fhF76rNfvQ&rs=1&pid=ImgDetMain" alt="">
+                </div>
+            </article>
+
+            <article>
+                <div class="content">
+                    <h2>Justin Bieber</h2>
+                    <h3>Strength Training:</h3>
+                    <p>1. Deadlifts (10-12)</p>
+                    <p>2. Bench Press (10-12 each leg)</p>
+                    <p>3. Pull-Ups (5-10)</p>
+                    <p>4. Shoulder Press (10-12)</p>
+                    <p>5. Tricep Dips (10-12)</p>
+                    <p>Cardio: 20min of HIIT</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://alexis.lindaikejisblog.com/photos/shares/5fbd73a921abb.jpg" alt="">
+                </div>
+            </article>
+
+            <article>
+                <div class="content">
+                    <h2>Emma Watson</h2>
+                    <h3>Strength Training:</h3>
+                    <p>1. Body Squats (10-12)</p>
+                    <p>2. Dumbbell Rows (10-12)</p>
+                    <p>3. Push-Ups (10-15)</p>
+                    <p>4. Plank (30-60 seconds)</p>
+                    <p>5. Glute Bridges (10-12)</p>
+                    <p>Cardio: 20min of cycling</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://assets.vogue.com/photos/6564aeed6d32738be2f6a2d1/master/w_2560%2Cc_limit/EMMA-W-271123-GETTY-002.jpg" alt="">
+                </div>
+            </article>
+
+            <article>
+                <div class="content">
+                    <h2>Jim Carrey</h2>
+                    <h3>Cardio and Strength:</h3>
+                    <p>1. Martial Arts and Traning (30min)</p>
+                    <p>2. Weightlifting</p>
+                    <p>3. Stretching routine (15-20)</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://faroutmagazine.co.uk/static/uploads/1/2023/11/Jim-Carrey-2017-Actor-Far-Out-Magazine.jpg" alt="">
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>This website was created by Anuj Kumar Yadav from Army Public School RK Puram, Secunderabad, for a website making competition.</p>
+        </div>
+    </footer>
+</body>
+</html>

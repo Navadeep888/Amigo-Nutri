@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      background: url('https://c1.wallpaperflare.com/preview/167/210/341/book-dark-page-open.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .background {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #1f1f1f;
+      border-radius: 15px;
+      overflow: hidden;
+      padding: 30px;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .screen-header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      background: #333;
+      padding: 15px 20px;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .screen-header-left, .screen-header-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .screen-header-button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+      margin-right: 5px;
+    }
+
+    .screen-header-button.close { background: #e74c3c; }
+    .screen-header-button.maximize { background: #f1c40f; }
+    .screen-header-button.minimize { background: #2ecc71; }
+
+    .screen-header-ellipsis {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #999;
+      margin-left: 3px;
+    }
+
+    .screen-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .app-title {
+      color: #3498db;
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .app-title::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 5px;
+      background: #3498db;
+      margin: 10px auto 0;
+    }
+
+    .app-contact {
+      color: #bbb;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .app-form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .app-form-group {
+      margin-bottom: 20px;
+    }
+
+    .app-form-control {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #666;
+      border-radius: 8px;
+      color: #fff;
+      background: #333;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .app-form-control::placeholder {
+      color: #aaa;
+    }
+
+    .app-form-control:focus {
+      border-color: #3498db;
+      background: #444;
+    }
+
+    .app-form-group.buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+
+    .app-form-button {
+      background: #3498db;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .app-form-button:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+    }
+
+    .app-form-button.cancel {
+      background: #e74c3c;
+    }
+
+    .app-form-button.cancel:hover {
+      background: #c0392b;
+    }
+
+    .screen-body-item.right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      flex: 1;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .screen-body-item.right img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @media screen and (min-width: 768px) {
+      .screen-body {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .screen-body-item {
+        flex: 1;
+      }
+    }
+
+    nav {
+      position: fixed;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 15px 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 12px;
+      display: block;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background: #3498db;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+    </ul>
+  </nav>
+
+  <div class="background">
+    <div class="container">
+      <div class="screen-header">
+        <div class="screen-header-left">
+          <div class="screen-header-button close"></div>
+          <div class="screen-header-button maximize"></div>
+          <div class="screen-header-button minimize"></div>
+        </div>
+        <div class="screen-header-right">
+          <div class="screen-header-ellipsis"></div>
+          <div class="screen-header-ellipsis"></div>
+          <div class="screen-header-ellipsis"></div>
+        </div>
+      </div>
+      <div class="screen-body">
+        <div class="screen-body-item left">
+          <div class="app-title">Contact Us</div>
+          <div class="app-contact">CONTACT INFO: +91 81314 XXXXX</div>
+          <div class="app-form">
+            <div class="app-form-group">
+              <input class="app-form-control" placeholder="Name" type="text">
+            </div>
+            <div class="app-form-group">
+              <input class="app-form-control" placeholder="Email" type="email">
+            </div>
+            <div class="app-form-group">
+              <input class="app-form-control" placeholder="Contact No" type="tel">
+            </div>
+            <div class="app-form-group message">
+              <textarea class="app-form-control" placeholder="Message" rows="4"></textarea>
+            </div>
+            <div class="app-form-group buttons">
+              <button class="app-form-button cancel">Cancel</button>
+              <button class="app-form-button">Send</button>
+            </div>
+          </div>
+        </div>
+        <div class="screen-body-item right">
+          <img src="images/contact.png" alt="Contact Image">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

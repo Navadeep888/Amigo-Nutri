@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="ai.css">
+    <link rel="shortcut icon" type="x-icon" href="Lines.png">
+    <title>Services</title>
+</head>
+
+<body class="dark-mode">
+    <!-- Navigation Bar -->
+    <nav class="nav">
+        
+        
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="index.html" class="link"><i class="bx bx-home"></i></a></li>
+                <li><a href="contact.html" class="link"><i class="bx bx-envelope"></i></a></li>
+                <li><a href="service.html" class="link active"><i class="bx bx-briefcase"></i></a></li>
+
+            </ul>
+        </div>
+          
+        <div class="nav-dark-mode-toggle">
+            <i class="bx bx-moon" id="darkModeToggle" style="cursor: pointer;"></i>
+        </div>
+        
+    </nav>
+
+   
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+        <div id="question"></div>
+        <button id="nextBtn" class="btn">Next</button>
+        <div id="resultContainer" style="display: none;">
+            <p id="resultMessage"></p>
+            <button id="resetQuiz" class="btn">Restart Quiz</button>
+        </div>
+    </section>
+
+   
+    <script>
+// Navbar menu toggle function
+function myMenuFunction() {
+    const i = document.getElementById("navMenu");
+    i.className = i.className === "nav-menu" ? "nav-menu responsive" : "nav-menu";
+}
+
+// Dark Mode Toggle Script
+const darkModeToggle = document.getElementById('darkModeToggle');
+darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle('light-mode');
+    darkModeToggle.classList.toggle('bx-sun');
+    darkModeToggle.classList.toggle('bx-moon');
+});
+
+const healthQuestions = [
+    { text: "Enter your weight in kg:", key: "weight", type: "number", min: 20, max: 300 },
+    { text: "Enter your height in cm:", key: "height", type: "number", min: 50, max: 250 },
+    { text: "Enter your waist circumference in cm:", key: "waist", type: "number", min: 20, max: 200 },
+    { text: "Enter your hip circumference in cm:", key: "hip", type: "number", min: 20, max: 200 },
+    { text: "How many hours do you sleep nightly?", key: "sleepHours", type: "number", min: 0, max: 24 },
+    { text: "How many hours of physical activity do you do weekly?", key: "activityHours", type: "number", min: 0, max: 40 },
+    { text: "How many junk food meals do you consume weekly?", key: "junkFood", type: "number", min: 0, max: 21 },
+];
+
+let currentQuestionIndex = 0;
+let healthAnswers = {};
+const questionContainer = document.getElementById('question');
+const progressIndicator = document.getElementById('progress');
+const nextBtn = document.getElementById('nextBtn');
+const resultContainer = document.getElementById('resultContainer');
+const resultMessage = document.getElementById('resultMessage');
+const resetQuiz = document.getElementById('resetQuiz');
+
+// Function to render the current health question
+function renderHealthQuestion() {
+    const currentQuestion = healthQuestions[currentQuestionIndex];
+    questionContainer.innerHTML = `
+        <p>${currentQuestion.text}</p>
+        <input type="number" id="input" name="answer" min="${currentQuestion.min}" max="${currentQuestion.max || ''}" required>
+    `;
+    progressIndicator.textContent = `Question ${currentQuestionIndex + 1} of ${healthQuestions.length}`;
+
+    const input = document.getElementById('input');
+
+    input.addEventListener('input', () => {
+        const min = parseFloat(input.min);
+        const max = parseFloat(input.max);
+        const value = parseFloat(input.value);
+        if (value < min) input.value = min;
+        if (max && value > max) input.value = max;
+    });
+
+    input.focus();
+}
+
+// Function to generate health suggestions based on answers
+function generateHealthSuggestions() {
+    const review = [];
+    const { BMI, waistHipRatio, BMR, activityHours, sleepQuality, sleepHours, junkFood } = healthAnswers;
+
+    if (BMI < 18.5) {
+        review.push("Your BMI indicates you are underweight. Consider increasing calorie intake with nutrient-dense foods.");
+    } else if (BMI > 25) {
+        review.push("Your BMI is in the overweight range. Focus on a balanced diet and regular exercise.");
+    }
+
+    if (waistHipRatio > 0.9) {
+        review.push("Your Waist-Hip Ratio suggests abdominal fat. Incorporate core-strengthening exercises and monitor your diet.");
+    }
+
+    if (BMR < 1200) {
+        review.push("Your BMR is low. Ensure you're eating enough to meet your energy needs.");
+    }
+
+    if (activityHours < 2.5) {
+        review.push("Increase physical activity to at least 150 minutes weekly for optimal health.");
+    }
+
+    if (sleepQuality < 3 || sleepHours < 7) {
+        review.push("Prioritize sleep to improve recovery and overall health. Aim for 7-9 hours nightly.");
+    }
+
+    if (junkFood > 7) {
+        review.push("Reduce your consumption of processed or junk food to improve overall health.");
+    }
+
+    if (review.length === 0) {
+        review.push("Great job! Your inputs suggest a healthy lifestyle. Keep it up!");
+    }
+
+    return review;
+}
+
+// Handle next button click
+nextBtn.addEventListener('click', () => {
+    const input = document.getElementById('input');
+    const value = input.value;
+
+    if (!value || (input.type === 'number' && isNaN(parseFloat(value)))) {
+        alert("Please provide a valid answer before proceeding.");
+        return;
+    }
+
+    healthAnswers[healthQuestions[currentQuestionIndex].key] = parseFloat(value);
+
+    if (currentQuestionIndex === healthQuestions.length - 1) {
+        // Calculate BMI, BMR, and Waist-Hip Ratio here
+        healthAnswers.BMI = (healthAnswers.weight / ((healthAnswers.height / 100) ** 2)).toFixed(2);
+        healthAnswers.BMR = (10 * healthAnswers.weight + 6.25 * healthAnswers.height - 5 * 25 - 161).toFixed(2); // Assumes female
+        healthAnswers.waistHipRatio = (healthAnswers.waist / healthAnswers.hip).toFixed(2);
+        const review = generateHealthSuggestions();
+
+        resultMessage.innerHTML = `
+            <strong>Health Suggestions:</strong>
+            <ul>
+                ${review.map(item => `<li>${item}</li>`).join("")}
+            </ul>
+        `;
+        resultContainer.style.display = 'block';
+        nextBtn.style.display = 'none';
+    } else {
+        currentQuestionIndex++;
+        renderHealthQuestion();
+    }
+});
+
+// Reset quiz on click of reset button
+resetQuiz.addEventListener('click', () => {
+    window.location.reload();
+});
+
+// Initialize the first question
+renderHealthQuestion();
+
+
+   </script>
+</body>
+</html>

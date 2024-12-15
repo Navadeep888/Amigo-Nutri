@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure body takes up full height */
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  background: url('images/wp11368638-dark-mode-pc-wallpapers.jpg') no-repeat center center fixed;
+  align-items: flex-start; /* Align items to the top */
+}
+canvas {
+  display: block;
+  margin-top: 150px; /* Add spacing from the top */
+  border: 1px solid black; /* Optional: Add a border for visibility */
+}

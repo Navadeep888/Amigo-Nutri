@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    color: #fff;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Navigation Styles */
+nav {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    margin: 1.2rem 0;
+}
+
+nav ul li a {
+    color: #fff;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.4s ease, transform 0.3s ease, color 0.3s ease;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+nav ul li a:hover {
+    background: #f5a623;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(245, 166, 35, 0.4);
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.link i {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.link:hover,
+.active {
+    color: #00b4d8;
+    transform: translateY(-3px);
+}
+
+/* Button Styling */
+.nav-button .btn {
+    padding: 12px 28px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-button .btn.white-btn {
+    background: #00b4d8;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 180, 216, 0.3);
+}
+
+.nav-button .btn.white-btn:hover {
+    background: #0077b6;
+    box-shadow: 0 6px 12px rgba(0, 119, 182, 0.4);
+}
+
+.nav-button .btn:hover {
+    color: #00b4d8;
+    border-color: #00b4d8;
+    background: transparent;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    background: rgba(24, 24, 24, 0.95);
+    text-align: center;
+    color: #fff;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* Dark and Light Mode Styles */
+body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+    background: url('images/wp11368638-dark-mode-pc-wallpapers.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body.dark-mode .link,
+body.dark-mode .nav-logo p {
+    color: #fff;
+}
+
+body.light-mode {
+    background: #f8f9fa;
+    color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode .link,
+body.light-mode .nav-logo p {
+    color: #333;
+}
+
+body.light-mode .btn.white-btn {
+    background: #0077b6;
+    color: #fff;
+}
+
+body.light-mode .btn.white-btn:hover {
+    background: #005f8f;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container Section */
+.quiz-section {
+    background: #232121; /* Pure dark background for a professional tone */
+    color: #eaeaea; /* Subtle light text */
+    padding: 3rem;
+    margin: 150px auto 3rem;
+    border-radius: 12px; /* Minimal rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Clean shadow for depth */
+    max-width: 700px; /* Balanced width */
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInPro 0.5s ease-in-out; /* Subtle fade-in animation */
+}
+
+/* Content Styling */
+.quiz-section p {
+    font-size: 1.4rem; /* Easy-to-read size */
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #d1d1d1; /* Soft gray for text */
+}
+
+/* Input and Select Styling */
+.quiz-section select,
+.quiz-section input[type="number"] {
+    width: 90%; /* Well-proportioned inputs */
+    padding: 1rem;
+    font-size: 1rem;
+    margin: 1.5rem 0;
+    border: 1px solid #444; /* Subtle, clean border */
+    border-radius: 8px;
+    background: #1f1a1a; /* Slightly lighter dark background */
+    color: #f5f5f5;
+    text-align: center;
+    outline: none;
+    box-shadow: none; /* Remove over-the-top shadows */
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.quiz-section select:focus,
+.quiz-section input[type="number"]:focus {
+    border-color: #00b4d8; /* Accent color on focus */
+    background: #222; /* Slightly lighter focus effect */
+}
+
+/* Buttons */
+.quiz-section .btn {
+    background: #1a6c98; /* Professional blue tone */
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 14px; /* Clean button design */
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 1rem;
+    margin-left: -25rem; /* Shift button to the left */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+
+.quiz-section .btn:hover {
+    background: #005f8b; /* Darker blue on hover */
+    transform: translateY(-2px); /* Subtle hover effect */
+}
+
+.quiz-section .btn:active {
+    background: #004a70; /* Even darker blue for active state */
+    transform: translateY(0); /* Return to neutral position */
+}
+
+/* Disabled Button */
+.quiz-section .btn:disabled {
+    background: #444; /* Muted dark gray for disabled state */
+    cursor: not-allowed;
+    color: #888; /* Softer text color */
+}
+
+/* Result Container */
+.quiz-section #resultContainer {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #1c1c1c; /* Slightly lighter container for results */
+    border-radius: 8px;
+    border: 1px solid #333; /* Minimal border */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    text-align: center;
+    color: #00b4d8; /* Accent color for results */
+}
+
+.quiz-section #resultContainer p {
+    font-size: 1.2rem; /* Reduced text size for improved readability */
+    line-height: 1.6; /* Comfortable spacing */
+    color: #eaeaea; /* Maintain consistent light text color */
+    margin-bottom: 1rem;
+}
+
+
+/* Subtle Animation for Entrance */
+@keyframes fadeInPro {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
